@@ -1,5 +1,7 @@
 <template>
-  <h1>Cripto Compiler</h1>
+  <div class="container">
+    <h1>Cripto Compiler</h1>
+  </div>
 </template>
 
 <script>

@@ -5,6 +5,10 @@
 }
 body{
     padding: 12px;
-    background-color: #fafafa;
+    background-color: $dark;
+    color: $white;
     font-family: 'Montserrat', sans-serif;
+}
+h1{
+    text-align: center;
 }
