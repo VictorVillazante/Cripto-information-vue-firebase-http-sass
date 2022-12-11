@@ -1,12 +1,13 @@
 <template>
     <div>
-        <form @submit.prevent="obtener">
+        <!-- <form @submit.prevent="obtener(cripto,moneda)"> -->
+        <form @submit.prevent="$emit('infoMoneda',moneda,cripto)">
             <div>
                 <label>
                     Moneda nacional
                 </label>
                 <select name="" id="" required v-model="moneda">
-                    <option selected>BOL</option>
+                    <option selected>MXN</option>
                     <option>USD</option>
                     <option>EUR</option>
                 </select>
@@ -34,14 +35,8 @@ export default {
         moneda:"",
         cripto:""
     }),
-    methods:{
-        async obtener(){
-            console.log(this.moneda+" "+this.cripto);
-            const resp=await fetch("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD,EUR");
-            const data=await resp.json();
-            console.log(data);
-        }
-    }
+    // props:["obtener"]
+   
 }
 </script>
 
