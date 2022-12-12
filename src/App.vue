@@ -8,16 +8,16 @@
       <Data :cripto="info.cripto" :moneda="info.moneda" :img="info.img" :precio="info.precio"/>
     </Grid>
   </div>
- 
-
+  <reload-prompt/>
 </template>
 
 <script>
 import Formulario from './components/Formulario.vue';
 import Data from './components/Data.vue';
 import Grid from './components/Grid.vue';
+import ReloadPrompt from './components/ReloadPrompt.vue';
 export default {
-    components: { Formulario, Data, Grid },
+    components: { Formulario, Data, Grid,ReloadPrompt },
     data:()=>({
       info:{
         cripto:"*",
@@ -31,13 +31,16 @@ export default {
             console.log(moneda+" "+cripto);
             //const resp=await fetch(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC&tsyms=USD,EUR`);
             const resp=await fetch(`https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${cripto}&tsyms=${moneda},`);
-
-            const data=await resp.json();
+            const {RAW}=await resp.json();
+            const dataCripto=RAW[cripto];
+            const data=dataCripto[moneda];
             console.log(data);
-            const dataCripto=data.RAW[cripto];
-            const dataMoneda=dataCripto[moneda];
-            console.log(dataMoneda);
+            this.info.cripto=cripto;
+            this.info.moneda=moneda;
+            this.info.img=data.IMAGEURL;
+            this.info.precio=data.PRICE;
         }
+
     }
 }
 </script>
