@@ -3,7 +3,7 @@
     <h2>Informacion</h2>
     <h3><span class="cripto">{{cripto}}</span>--<span class="moneda">{{moneda}}</span></h3>
     <div>
-      <img :src="`https://www.cryptocompare.com${img}`" alt="">
+      <img :src="`${img}`" alt="">
       <p>
         Precio: <strong>${{precio}}</strong>
       </p>      
